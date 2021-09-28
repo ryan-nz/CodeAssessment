@@ -6,7 +6,11 @@ namespace CodeAssessment
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            IJob job = new Job();
+            job.DoJob();
+
+            Console.WriteLine("Job Finished.");
+            Console.ReadLine();
         }
     }
 }
