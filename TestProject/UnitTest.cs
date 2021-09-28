@@ -40,6 +40,11 @@ namespace TestProject
         [InlineData("5", "151", "4")]
         [InlineData("-5", "-152", "-157")]
         [InlineData("1000", "151", "999")]
+        [InlineData("5", "9", "14")]
+        [InlineData("14", "130", "144")]
+        [InlineData("144", "20", "12")]
+        [InlineData("12", "1500", "1360")]
+        [InlineData("1360", "1", "1209")]
         public void DoJob(string read, string input, string expected)
         {
             // Arrange ...
