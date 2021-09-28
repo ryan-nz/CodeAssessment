@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace CodeAssessment
 {
@@ -6,9 +7,9 @@ namespace CodeAssessment
     {
         private readonly string _fileName;
 
-        private int _valueRead { get; set; }
-        private int _valueFromConsole { get; set; }
-        private int _valueToWrite { get; set; }
+        private int _valueRead;
+        private int _valueFromConsole;
+        private int _valueToWrite;
 
         public Job(string readFilePath)
         {
@@ -42,12 +43,18 @@ namespace CodeAssessment
         /// </summary>
         protected virtual void Calculate()
         {
+            int total = _valueRead + _valueFromConsole;
+            if (total > 152)
+            {
+                total -= 152;
+            }
 
+            _valueToWrite = total;
         }
 
         private void WriteFile()
         {
-
+            File.WriteAllText(_fileName, _valueToWrite.ToString());
         }
     }
 }
