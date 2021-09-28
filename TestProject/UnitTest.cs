@@ -33,5 +33,30 @@ namespace TestProject
             string textRead = File.ReadAllText(_fileName);
             textRead.Should().Be(textExpected);
         }
+
+        [Theory]
+        [InlineData("1", "2", "3")]
+        [InlineData("1", "151", "152")]
+        [InlineData("5", "151", "4")]
+        [InlineData("-5", "-152", "-157")]
+        [InlineData("1000", "151", "999")]
+        public void DoJob(string read, string input, string expected)
+        {
+            // Arrange ...
+            // arrange read text
+            File.WriteAllText(_fileName, read);
+
+            // Mock Console read
+            var consoleRead = new StringReader(input);
+            Console.SetIn(consoleRead);
+
+            // Act ...
+            IJob job = new Job(_fileName);
+            job.DoJob();
+
+            // Assert ...
+            string textRead = File.ReadAllText(_fileName);
+            textRead.Should().Be(expected);
+        }
     }
 }
