@@ -29,12 +29,30 @@ namespace CodeAssessment
 
         private void ReadFile()
         {
+            _valueRead = 0;
 
+            if (File.Exists(_fileName))
+            {
+                string text = File.ReadAllText(_fileName);
+                Console.WriteLine(text);
+                bool res = int.TryParse(text, out int number);
+                if (res)
+                {
+                    _valueRead = number;
+                }
+            }
         }
 
         private void ReadFromConsole()
         {
+            _valueFromConsole = 0;
 
+            string value = Console.ReadLine();
+            bool res = int.TryParse(value, out int number);
+            if (res)
+            {
+                _valueFromConsole = number;
+            }
         }
 
         /// <summary>
