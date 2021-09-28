@@ -6,7 +6,9 @@ namespace CodeAssessment
     {
         static void Main(string[] args)
         {
-            IJob job = new Job();
+            string readFilePath = @"c:\temp\alstef-assessment.txt";
+
+            IJob job = new Job(readFilePath);
             job.DoJob();
 
             Console.WriteLine("Job Finished.");
